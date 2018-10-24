@@ -5,8 +5,8 @@ import psycopg2 as dbapi2
 
 
 INIT_STATEMENTS = [
-    "CREATE TABLE IF NOT EXISTS DUMMY (NUM INTEGER)",
-    "INSERT INTO DUMMY VALUES (42)",
+    "CREATE TABLE MOVIE IF NOT EXISTS (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE VARCHAR(80) NOT NULL, YR INTEGER)",
+    "INSERT INTO MOVIE (TITLE, YR) VALUES ('MAKSUT', 1987)"
 ]
 
 
@@ -19,7 +19,8 @@ def initialize(url):
 
 
 if __name__ == "__main__":
-    url = os.getenv("DATABASE_URL")
+   
+    url = os.getenv("DATABASE_URL"="postgres://itucs:itucspw@localhost:32775/itucsdb" python dbinit.py)
     if url is None:
         print("Usage: DATABASE_URL=url python dbinit.py", file=sys.stderr)
         sys.exit(1)

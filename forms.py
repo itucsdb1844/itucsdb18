@@ -1,0 +1,24 @@
+from flask_wtf import FlaskForm
+from wtforms import PasswordField, StringField
+from wtforms.validators import DataRequired, NumberRange, Optional
+from wtforms_components import IntegerField
+
+from datetime import datetime
+
+
+class LoginForm(FlaskForm):
+    username = StringField("Username", validators=[DataRequired()])
+
+    password = PasswordField("Password", validators=[DataRequired()])
+
+
+class MovieEditForm(FlaskForm):
+    title = StringField("Title", validators=[DataRequired()])
+
+    year = IntegerField(
+        "Year",
+        validators=[
+            Optional(),
+            NumberRange(min=1887, max=datetime.now().year),
+        ],
+    )
